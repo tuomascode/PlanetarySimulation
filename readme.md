@@ -12,8 +12,7 @@ https://user-images.githubusercontent.com/115335825/210354787-57c14d1b-ed9c-4337
 
 
 
-**
-Dependencies**
+**Dependencies**
 
 pygame,numpy
 
