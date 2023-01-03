@@ -17,9 +17,6 @@
 #         iii) Randomize system
 
 
-#Adding some test comments to try git commit and push
-#Adding more comments to test this out
-
 import random,pygame
 import numpy as np
 from collections import deque
@@ -92,7 +89,6 @@ class Sphere:
         #Basically a copy of the init function but with a twist. The initial vector is rotated to create a spinning effect.
         self.turn_angle+=angle
         if self.turn_angle>self.angle_count-1:
-            print("This shouldn't print")
             self.turn_angle=0
 
         vertices=[]
@@ -149,10 +145,6 @@ class Sphere:
     def adjust_color(self,z_value, radius):
         # Calculate the new value
         new_value =self.color * ((z_value*-1) / radius)**2
-        # Round the value to the nearest integer
-        # new_value = round(new_value)
-        # Convert the value to an integer
-        # new_value = int(new_value)
         #To get colorful sphere set disco value to True
         disco=False
         if disco:
@@ -183,6 +175,7 @@ class Sphere:
 
         #I love me some numpy operations <3
         flipped_list=np.copy(list)
+        #By multiplying all the y values by -1, I solve half of the sphere vertices
         flipped_list[:,1] *= -1
         return flipped_list
     def draw_dots(self, screen,size_factor=1,position=(400,400),rotation=True):
