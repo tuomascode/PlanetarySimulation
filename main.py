@@ -839,6 +839,8 @@ class Game:
         self.menu=MenuScreen()
         self.blackhole=False
         pygame.time.set_timer(pygame.USEREVENT,50)
+        pygame.display.set_caption("Celestial Body Simulation")
+
     def reset(self):
         Game.blackhole=False
         self.tickrate+=10
