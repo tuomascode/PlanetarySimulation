@@ -24,19 +24,22 @@ from collections import deque
 class Sphere:
     #This class holds the functionality to draw the sphere
     def __init__(self,radius,angle_count=7):
+        #Define color and make sure it is bright
+
         self.color=np.random.randint(0, 256, size=3)
         while np.sum(self.color)<500:
             index=random.randint(0,2)
             self.color[index]+=5
             if self.color[index]>255:
                 self.color[index]=255
+
         #Phase is the index which we use to get the wanted vertices out of phase_list.
         #This helps us rotate the sphere without calculating the rotations separetely.
         self.phase=0
         self.phase_list=[]
         self.turn_angle=0
 
-        #Define the angle of rotations
+        #Define the angle of rotations, 7 by default
         self.angle_count=angle_count
 
         #The following code calculates the vertices. Later I will use the rotate function to get the rest
@@ -44,6 +47,12 @@ class Sphere:
         vertices=[]    #Holds the vertices. Later we will for the polygons out of these
         vector=np.array([radius,0,0])   #Initial vector for calculating
         self.radius=radius
+
+        #The rest of the code is for calculating the vertices of the sphere. Only the front facing vertices are calculated
+        #The vertices are solved by rotating a vector getting its coordinates.
+        #To make sure the vertices remain evenly spaced, binary search is used to find the corresponding angles, after the vector gets rotated upward
+
+
         #Get the middle section of the sphere vertices
         vertices.append(self.generate_vertices(vector,self.angle_count))
 
@@ -82,9 +91,12 @@ class Sphere:
         self.phase_list.append(vertices)
 
         #Here I use rotate_sphere function to save the rest of the phases of the rotation of the sphere.
+        #At the moment the sphere doesn't rotate, so this function isn't used. This might get changed #TODO
 
-        for i in range(self.angle_count-1):
-            self.rotate_sphere(1)
+        if False:
+
+            for i in range(self.angle_count-1):
+                self.rotate_sphere(1)
     def rotate_sphere(self,angle):
         #Basically a copy of the init function but with a twist. The initial vector is rotated to create a spinning effect.
         self.turn_angle+=angle
@@ -204,7 +216,7 @@ class Sphere:
             if self.phase>self.angle_count-1:
                 self.phase=0
     def generate_vertices(self,vector,angle):
-        #Test function for now to try and get the middle level vertices of a sphere
+        #Function gets a vector and an angle and solves all the vertices, that you get by rotating the vector by the y-axis by the given angle.
 
         #Initial vector that points to the direction of x axis
         vertices=[vector]
