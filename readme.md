@@ -1,6 +1,6 @@
 **Celestial Body Simulation**
 
-A simulation done with python pygame. The program simulates three celestial bodies in space. The purpose of the program was for me to learn about perspective, vectors, matrix calculations such as rotations. The main challenge was in creating a movable camera and projecting from 3d to 2d.
+A simulation done with python pygame. The program simulates three celestial bodies in space. The purpose of the program was for me to learn about perspective, vectors and matrix calculations such as rotations. The main challenge was in creating a movable camera and projecting from 3d to 2d.
 
 
 
